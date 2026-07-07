@@ -1,0 +1,44 @@
+
+/* Custom styles for things Tailwind can't do easily */
+html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:#f8fafc;color:#0f172a;-webkit-font-smoothing:antialiased;overflow-x:hidden;overscroll-behavior:none}
+.hide-scrollbar::-webkit-scrollbar{display:none}
+.hide-scrollbar{scrollbar-width:none;-ms-overflow-style:none}
+
+/* Mesh blobs */
+.mesh-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.55;animation:meshFloat 18s ease-in-out infinite}
+@keyframes meshFloat{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(30px,-20px) scale(1.08)}50%{transform:translate(-20px,15px) scale(.96)}75%{transform:translate(15px,25px) scale(1.04)}}
+
+/* Particles */
+.particle{position:absolute;background:rgba(255,255,255,.85);border-radius:50%;animation:particleFloat linear infinite}
+@keyframes particleFloat{0%{transform:translateY(0) translateX(0);opacity:0}12%{opacity:.85}88%{opacity:.55}100%{transform:translateY(-280px) translateX(40px);opacity:0}}
+
+/* Banner */
+.banner-track{display:flex;transition:transform .5s cubic-bezier(0.22,1,0.36,1);will-change:transform}
+.banner-track.dragging{transition:none}
+.banner-slide{flex:0 0 100%;position:relative;overflow:hidden;min-height:220px;display:flex;align-items:flex-end;padding:24px 20px;border-radius:20px;color:#fff;box-shadow:0 10px 40px rgba(0,0,0,.18)}
+@media(max-width:380px){.banner-slide{min-height:190px}}
+
+/* Shimmer */
+.shimmer::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 40%,rgba(255,255,255,.12) 50%,transparent 60%);background-size:300% 100%;animation:shimmer 4s ease-in-out infinite;pointer-events:none}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+/* Progress */
+.progress-seg{flex:1;height:4px;border-radius:4px;background:rgba(255,255,255,.2);overflow:hidden;position:relative}
+.progress-seg::after{content:'';display:block;width:0%;height:100%;background:#fff;border-radius:4px}
+.progress-seg.done::after{width:100%}
+.progress-seg.active::after{animation:segProgress 4s linear forwards}
+@keyframes segProgress{from{width:0%}to{width:100%}}
+
+/* Card shine */
+.card-shine{position:relative;overflow:hidden}
+.card-shine::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#6366f1,#a855f7);opacity:0;transition:opacity .25s ease;z-index:1}
+.card-shine:hover::before{opacity:1}
+
+/* Logo shine */
+.logo-shine{position:relative;overflow:hidden}
+.logo-shine::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,.4) 50%,transparent 60%);animation:logoShine 3.5s ease-in-out infinite}
+@keyframes logoShine{0%,100%{transform:translateX(-100%)}50%{transform:translateX(100%)}}
+
+/* Reduced motion */
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
